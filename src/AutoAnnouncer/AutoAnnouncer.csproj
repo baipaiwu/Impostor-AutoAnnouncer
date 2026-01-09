@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- 根据实际 Impostor.Server 包版本调整 -->
-    <PackageReference Include="Impostor.Server" Version="2.*" />
+    <!-- 使用本地 package source 中的 Impostor.Api 包 -->
+    <PackageReference Include="Impostor.Api" Version="1.10.6-ci.1216" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.*" />
   </ItemGroup>
 </Project>
