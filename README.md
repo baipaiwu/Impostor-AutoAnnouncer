@@ -1,15 +1,24 @@
-﻿# AutoAnnouncer for Impostor.Server
+# AutoAnnouncer for Impostor.Server
 
-杩欎釜鎻掍欢浼氬湪鐜╁鍔犲叆鍜屾父鎴忕粨鏉熸椂鑷姩鍙戦€佸叕鍛娿€傚熀浜?Impostor.Server锛圛mpostor API锛夊疄鐜帮紝鐩爣涓?.NET 6.0銆?
-鍔熻兘
-- 鐜╁杩涘叆鏃跺叕鍛?- 娓告垙缁撴潫鏃跺叕鍛?- 鍙厤缃殑妯℃澘锛坈onfig/announcements.json锛夛紝鏀寔鍗犱綅绗︼細{player}, {room}, {reason}, {time}
+这个插件会在玩家加入和游戏结束时自动发送公告。基于 Impostor.Server（Impostor API）实现，目标为 .NET 6.0。
 
-蹇€熷紑濮?1. 鍦?GitHub 涓婂垱寤轰粨搴撳苟 push 鏈」鐩枃浠讹紝鎴栧湪鏈湴鍒涘缓浠撳簱骞?push锛堣涓嬫柟鍛戒护绀轰緥锛夈€?2. CI (GitHub Actions) 浼氬湪 push 鍒?main 鏃舵瀯寤哄苟涓婁紶 AutoAnnouncer.dll 涓?artifact锛屾垨浣犲彲浠ュ湪鏈湴鏋勫缓锛?   - dotnet build --configuration Release
-3. 灏嗙敓鎴愮殑 DLL锛坰rc/AutoAnnouncer/bin/Release/net6.0/AutoAnnouncer.dll锛夊鍒跺埌浣犵殑 Impostor.Server 鐨勬彃浠舵枃浠跺す锛堥€氬父鏄?Impostor/Plugins锛?4. 灏?config/announcements.json 涓?DLL 鏀惧湪涓€璧锋垨鏀惧湪鏈嶅姟鍣ㄥ彲璇诲彇鐨?config 鐩綍涓苟缂栬緫妯℃澘
-5. 閲嶅惎 Impostor.Server
+功能
+- 玩家进入时公告
+- 游戏结束时公告
+- 可配置的模板（config/announcements.json），支持占位符：{player}, {room}, {reason}, {time}
 
-閰嶇疆
-- config/announcements.json锛氱ず渚嬪湪浠撳簱鍐?
+快速开始
+1. 在 GitHub 上将本仓库文件 push 到你的仓库（或使用网页 UI 上传）。
+2. GitHub Actions 会在 push 到 main 时构建并上传 AutoAnnouncer.dll 为 artifact，或你可以在本地构建：
+   - dotnet build --configuration Release
+3. 将生成的 DLL（src/AutoAnnouncer/bin/Release/net6.0/AutoAnnouncer.dll）复制到你的 Impostor.Server 的插件文件夹（通常是 Impostor/Plugins）
+4. 将 config/announcements.json 放在与 DLL 同目录下的 `config` 文件夹或插件可读取的位置，并编辑模板
+5. 重启 Impostor.Server
+
+配置
+- config/announcements.json：示例在仓库内，支持占位符 {player}, {room}, {reason}, {time}
+
 CI
-- .github/workflows/dotnet-build.yml 浼氬湪 push/pull_request 鏃舵瀯寤哄苟涓婁紶 artifact 鍚嶄负 `AutoAnnouncer-dll`锛堝寘鍚?DLL锛夈€?
-璁稿彲锛歁IT
+- .github/workflows/dotnet-build.yml 会在 push/pull_request 时构建并上传 artifact 名为 `AutoAnnouncer-dll`（包含 DLL）。
+
+许可：MIT
