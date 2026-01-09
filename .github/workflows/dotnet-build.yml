@@ -12,16 +12,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.x'
+          # 如果你使用 .NET 8 请保留 8.0.x；若你改回 net6.0，请改为 '6.0.x'
+          dotnet-version: '8.0.x'
+
       - name: Restore
         run: dotnet restore src/AutoAnnouncer/AutoAnnouncer.csproj
+
       - name: Build
         run: dotnet build src/AutoAnnouncer/AutoAnnouncer.csproj --configuration Release --no-restore
+
+      - name: Show build outputs (for debugging)
+        run: ls -R src/AutoAnnouncer/bin/Release || true
+
       - name: Publish artifact
         uses: actions/upload-artifact@v4
         with:
           name: AutoAnnouncer-dll
-          path: src/AutoAnnouncer/bin/Release/net6.0/AutoAnnouncer.dll
+          # Use a wildcard so it works for net6.0, net8.0, or any TFMs
+          path: src/AutoAnnouncer/bin/Release/**/AutoAnnouncer.dll
