@@ -1,0 +1,4 @@
+{
+  "PlayerJoinMessage": "欢迎 {player} 加入游戏！",
+  "GameEndedMessage": "游戏结束！原因：{reason}"
+}

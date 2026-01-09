@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>AutoAnnouncer</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 根据实际 Impostor.Server 包版本调整 -->
+    <PackageReference Include="Impostor.Server" Version="2.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.*" />
+  </ItemGroup>
+</Project>
