@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <!-- 使用本地 package source 中的 Impostor.Api 包 -->
-    <PackageReference Include="Impostor.Api" Version="1.10.6-ci.1216" />
+    <PackageReference Include="Impostor.Api" Version="1.10.4" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.*" />
   </ItemGroup>
 </Project>
