@@ -1,0 +1,27 @@
+name: Build AutoAnnouncer
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+      - name: Restore
+        run: dotnet restore src/AutoAnnouncer/AutoAnnouncer.csproj
+      - name: Build
+        run: dotnet build src/AutoAnnouncer/AutoAnnouncer.csproj --configuration Release --no-restore
+      - name: Publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoAnnouncer-dll
+          path: src/AutoAnnouncer/bin/Release/net6.0/AutoAnnouncer.dll
